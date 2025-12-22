@@ -1,4 +1,6 @@
-package cn.junki.deepresearch.config;
+package cn.junki.deepresearch.mcp;
+
+import java.time.Duration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +22,7 @@ public class McpConfig {
         return (builder, method, endpoint, body, context) -> {
             // 请求头添加jina服务的api_key
             builder.header("Authorization", "Bearer " + AgentEnv.JINA_API_KEY);
-            builder.timeout(java.time.Duration.ofSeconds(120));
+            builder.timeout(Duration.ofSeconds(120));
         };
     }
 

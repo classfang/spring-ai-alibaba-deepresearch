@@ -7,14 +7,17 @@ spring:
     mcp:
       client:
         enabled: true
+        request-timeout: 600s
         toolcallback:
           enabled: true
-#        sse:
-#          connections:
-#            jina:
-#              # "https://mcp.jina.ai"
-#              url: "http://localhost:8787/v1/"
-        request-timeout: 60000
+        # 直连暂时存在timeout错误，待spring-ai修复；采用stdio模式，使用mcp-remote组件做代理
+        #sse:
+        #  connections:
+        #    jina:
+        #      # 官方地址：https://mcp.jina.ai 本地部署：http://127.0.0.1:8787
+        #      url: "https://mcp.jina.ai"
+        stdio:
+          servers-configuration: classpath:mcp-servers.json
 
 server:
   port: 8080
