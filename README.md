@@ -53,7 +53,7 @@
 
 ```bash
 export AI_DASHSCOPE_API_KEY=your_dashscope_api_key
-export JINA_API_KEY=your_jina_api_key  # 可选
+export JINA_API_KEY=your_jina_api_key  # 可选，官网首页无需登录可免费领取api_key（https://jina.ai/）
 ```
 
 ### 构建和运行
