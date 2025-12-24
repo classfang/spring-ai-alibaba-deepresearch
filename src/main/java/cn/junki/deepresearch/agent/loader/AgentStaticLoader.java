@@ -30,13 +30,13 @@ class AgentStaticLoader implements AgentLoader {
 
     private final Map<String, Agent> agents = new ConcurrentHashMap<>();
 
-    public AgentStaticLoader(ToolCallbackProvider toolCallbackProvider) {
+    public AgentStaticLoader(ToolCallbackProvider toolCallbackProvider, DeepResearchAgent deepResearchAgent) {
 
         List<ToolCallback> toolCallbacks = Arrays.asList(toolCallbackProvider.getToolCallbacks());
 
         log.info("Loaded MCP tool callbacks: {}", toolCallbacks.size());
 
-        ReactAgent researchAgent = new DeepResearchAgent().getResearchAgent(toolCallbacks);
+        ReactAgent researchAgent = deepResearchAgent.getResearchAgent(toolCallbacks);
         GraphRepresentation representation = researchAgent.getAndCompileGraph().stateGraph.getGraph(GraphRepresentation.Type.PLANTUML);
 
         log.info("DeepResearchAgent Graph: {}", representation.content());
